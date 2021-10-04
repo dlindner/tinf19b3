@@ -1,5 +1,8 @@
 package de.dhbw.tinf19b3.intro;
 
+import java.util.Arrays;
+import java.util.List;
+
 public final class Main {
 	
 	private Main() {
@@ -7,18 +10,28 @@ public final class Main {
 	}
 
 	public static void main(final String[] arguments) {
-		final Teslaauto meinAuto = new Teslaauto();
+		final Tesla meinAuto = new Teslaauto();
 		final Teslamensch meinErfinder = new Teslamensch();
 		
 		meinAuto.gebeAuslauf();
 		meinErfinder.gebeAuslauf();
 		
-		final Tesla[] meineTeslas = new Tesla[2];
-		meineTeslas[0] = meinAuto;
-		meineTeslas[1] = meinErfinder;
-		
-		for (final Tesla each : meineTeslas) {
+		final List<Tesla> meineTeslas = Arrays.asList(
+				meinAuto,
+				meinErfinder);
+
+		//meineTeslas.forEach(t -> t.gebeAuslauf());
+		meineTeslas.forEach(Tesla::gebeAuslauf);
+		for (Tesla each : meineTeslas) {
 			each.gebeAuslauf();
+		}
+
+		for (Tesla each : meineTeslas) {
+			if (each instanceof Teslaauto) {
+				System.out.println("T2: Ich fahre bis zum Horizont und darüber hinaus! Freiheit!");
+			} else {
+				System.out.println("T3: Ich prelle das nächste Restaurant.");
+			}
 		}
 		
 		final Garage meineGarage = new Garage();
@@ -26,8 +39,6 @@ public final class Main {
 		meineGarage.parke(meinAuto);
 		meineGarage.parke(meinErfinder);
 		
-		for (final Tesla each : meineTeslas) {
-			meineGarage.parke(each);
-		}
+		meineTeslas.forEach(meineGarage::parke);
 	}
 }
