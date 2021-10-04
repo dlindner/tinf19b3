@@ -1,28 +1,32 @@
 package de.dhbw.tinf19b3.intro;
 
-public class Main {
+public final class Main {
+	
+	private Main() {
+		super();
+	}
 
-	public static void main(String[] arguments) {
-		Teslaauto meinAuto = new Teslaauto();
-		Teslamensch meinErfinder = new Teslamensch();
+	public static void main(final String[] arguments) {
+		final Teslaauto meinAuto = new Teslaauto();
+		final Teslamensch meinErfinder = new Teslamensch();
 		
 		meinAuto.gebeAuslauf();
 		meinErfinder.gebeAuslauf();
 		
-		Tesla[] meineTeslas = new Tesla[2];
+		final Tesla[] meineTeslas = new Tesla[2];
 		meineTeslas[0] = meinAuto;
 		meineTeslas[1] = meinErfinder;
 		
-		for (Tesla each : meineTeslas) {
+		for (final Tesla each : meineTeslas) {
 			each.gebeAuslauf();
 		}
 		
-		Garage meineGarage = new Garage();
+		final Garage meineGarage = new Garage();
 		
 		meineGarage.parke(meinAuto);
 		meineGarage.parke(meinErfinder);
 		
-		for (Tesla each : meineTeslas) {
+		for (final Tesla each : meineTeslas) {
 			meineGarage.parke(each);
 		}
 	}

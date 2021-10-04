@@ -6,15 +6,15 @@ public class Garage {
 		super();
 	}
 	
-	public void parke(Tesla tesla) {
+	public void parke(final Tesla tesla) {
 		System.out.println("G1: Es wird knapp, aber es passt.");
 	}
 	
-	public void parke(Teslaauto auto) {
+	public void parke(final Teslaauto auto) {
 		System.out.println("G2: Es riecht überhaupt nicht eklig!");
 	}
 	
-	public void parke(Teslamensch mensch) {
+	public void parke(final Teslamensch mensch) {
 		System.out.println("G3: Ist nur vorrübergehend, mein Freund.");
 	}
 }
