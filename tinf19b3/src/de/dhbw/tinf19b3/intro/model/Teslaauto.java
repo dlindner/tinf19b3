@@ -1,4 +1,6 @@
-package de.dhbw.tinf19b3.intro;
+package de.dhbw.tinf19b3.intro.model;
+
+import de.dhbw.tinf19b3.intro.model.generic.Tesla;
 
 public class Teslaauto extends Tesla {
 	

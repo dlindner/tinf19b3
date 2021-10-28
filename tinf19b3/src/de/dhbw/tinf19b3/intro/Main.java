@@ -3,6 +3,11 @@ package de.dhbw.tinf19b3.intro;
 import java.util.Arrays;
 import java.util.List;
 
+import de.dhbw.tinf19b3.intro.model.Garage;
+import de.dhbw.tinf19b3.intro.model.Teslaauto;
+import de.dhbw.tinf19b3.intro.model.Teslamensch;
+import de.dhbw.tinf19b3.intro.model.generic.Tesla;
+
 public final class Main {
 	
 	private Main() {
@@ -24,14 +29,6 @@ public final class Main {
 		meineTeslas.forEach(Tesla::gebeAuslauf);
 		for (Tesla each : meineTeslas) {
 			each.gebeAuslauf();
-		}
-
-		for (Tesla each : meineTeslas) {
-			if (each instanceof Teslaauto) {
-				System.out.println("T2: Ich fahre bis zum Horizont und darüber hinaus! Freiheit!");
-			} else {
-				System.out.println("T3: Ich prelle das nächste Restaurant.");
-			}
 		}
 		
 		final Garage meineGarage = new Garage();
