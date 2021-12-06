@@ -6,6 +6,8 @@ import java.util.zip.GZIPOutputStream;
 
 public class Komprimierungsdekorierer extends Datenübertragungsdekorierer {
 	
+	private static final String encoding = "utf-8";
+
 	public Komprimierungsdekorierer(
 			Datenübertragung nachfolger) {
 		super(nachfolger);
@@ -14,12 +16,13 @@ public class Komprimierungsdekorierer extends Datenübertragungsdekorierer {
 	@Override
 	public void sende(
 			String nachricht) {
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		try {
-	        GZIPOutputStream gzip = new GZIPOutputStream(out);
-		    gzip.write(nachricht.getBytes("utf-8"));
-		    gzip.close();
-		    String komprimiert = out.toString("utf-8");
+		// try-with-resources
+		try (
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			GZIPOutputStream gzip = new GZIPOutputStream(out);
+		) {
+		    gzip.write(nachricht.getBytes(encoding));
+		    String komprimiert = out.toString(encoding);
 		    super.sende(komprimiert);
 		} catch (IOException e) {
 			return;
